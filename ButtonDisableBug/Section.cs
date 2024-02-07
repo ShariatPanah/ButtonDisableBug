@@ -1,7 +1,10 @@
-﻿namespace ButtonDisableBug
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+
+namespace ButtonDisableBug
 {
-    public class Section
+    public partial class Section : ObservableObject
     {
-        public string Title { get; set; }
+        [ObservableProperty]
+        private string _title = "";
     }
 }

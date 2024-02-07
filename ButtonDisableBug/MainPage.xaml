@@ -3,7 +3,10 @@
     x:Class="ButtonDisableBug.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:converters="clr-namespace:ButtonDisableBug">
+    xmlns:converters="clr-namespace:ButtonDisableBug"
+    xmlns:local="clr-namespace:ButtonDisableBug"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:DataType="local:Section">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -17,17 +20,18 @@
 
             <Button
                 HorizontalOptions="Fill"
-                IsEnabled="{Binding Source={x:Reference txtTitle}, Path=Text.Length, Converter={StaticResource lengthConverter}}"
-                Text="Click me">
-                <!--<Button.Triggers>
-                    <DataTrigger
-                        Binding="{Binding Source={x:Reference txtTitle}, Path=Text.Length}"
-                        TargetType="Button"
-                        Value="0">
-                        <Setter Property="IsEnabled" Value="False" />
-                    </DataTrigger>
-                </Button.Triggers>-->
-            </Button>
+                IsEnabled="{Binding Title.Length, Converter={StaticResource lengthConverter}}"
+                Text="Click me" />
+
+            <Button
+                HorizontalOptions="Fill"
+                IsEnabled="{Binding Title, Converter={toolkit:IsStringNotNullOrEmptyConverter}}"
+                Text="Click me" />
+
+            <Button
+                HorizontalOptions="Fill"
+                IsEnabled="{Binding Title, Converter={toolkit:IsStringNotNullOrWhiteSpaceConverter}}"
+                Text="Click me" />
         </VerticalStackLayout>
     </ScrollView>
 
