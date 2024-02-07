@@ -6,7 +6,7 @@
 
     <ScrollView>
         <VerticalStackLayout Padding="30,0" Spacing="25">
-            <Entry x:Name="txtTitle" Text="" />
+            <Entry x:Name="txtTitle" />
 
             <Button HorizontalOptions="Fill" Text="Click me">
                 <Button.Triggers>
